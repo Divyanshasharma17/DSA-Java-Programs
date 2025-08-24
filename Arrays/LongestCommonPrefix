@@ -18,7 +18,7 @@ Constraints:
 3) strs[i] consists of only lowercase English letters.
 
 Approach:
-1) Sort the array of strings.
+1) Sort the array of strings lexicographically.
 2) The common prefix of the array must be the common prefix 
    between the first and last strings in the sorted array.
 3) Compare characters of the first and last strings one by one.
@@ -32,20 +32,17 @@ Space Complexity: O(1)
 ===========================================================
 */
 
-Solution :-
-
+Solution:-
 import java.util.Arrays;
-class Solution {
 
+class Solution {
     public String longestCommonPrefix(String[] strs) {
         // Edge case: null or empty array
         if (strs == null || strs.length == 0) {
             return "";
         }
-
         // Sort the array lexicographically
         Arrays.sort(strs);
-
         // Compare first and last strings in the sorted array
         String s1 = strs[0];
         String s2 = strs[strs.length - 1];
@@ -59,4 +56,6 @@ class Solution {
         // Return the common prefix
         return s1.substring(0, i);
     }
+}
+
 }
