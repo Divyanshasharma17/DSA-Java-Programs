@@ -1,0 +1,62 @@
+/*
+===========================================================
+Problem: Longest Common Prefix
+Difficulty: Easy
+===========================================================
+
+Description:
+Given an array of strings 'strs', find the longest common prefix string 
+that is shared among all strings. If there is no common prefix, return an empty string "".
+
+Example:
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+Constraints:
+1) 0 <= strs.length <= 200
+2) 0 <= strs[i].length <= 200
+3) strs[i] consists of only lowercase English letters.
+
+Approach:
+1) Sort the array of strings.
+2) The common prefix of the array must be the common prefix 
+   between the first and last strings in the sorted array.
+3) Compare characters of the first and last strings one by one.
+4) Stop at the first mismatch and return the substring up to that index.
+
+Time Complexity: O(n log n + m) 
+   - Sorting: O(n log n) where n = number of strings
+   - Comparing first and last strings: O(m) where m = min length of first/last string
+Space Complexity: O(1) 
+   - No extra space used besides variables
+===========================================================
+*/
+
+Solution :-
+
+import java.util.Arrays;
+class Solution {
+
+    public String longestCommonPrefix(String[] strs) {
+        // Edge case: null or empty array
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
+
+        // Sort the array lexicographically
+        Arrays.sort(strs);
+
+        // Compare first and last strings in the sorted array
+        String s1 = strs[0];
+        String s2 = strs[strs.length - 1];
+        int i = 0;
+
+        // Compare characters until a mismatch or end of string
+        while (i < s1.length() && i < s2.length() && s1.charAt(i) == s2.charAt(i)) {
+            i++;
+        }
+
+        // Return the common prefix
+        return s1.substring(0, i);
+    }
+}
