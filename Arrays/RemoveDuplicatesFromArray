@@ -1,0 +1,48 @@
+===========================================================
+Problem: Remove Duplicates from Sorted Array
+Difficulty: Easy
+===========================================================
+
+Description :-
+  Given a sorted integer array 'nums' in non-decreasing order, 
+  remove the duplicates **in-place** such that each unique element 
+  appears only once. Return the number of unique elements 'k'.
+  The first 'k' elements of 'nums' should contain the unique elements 
+  in the original order. Elements beyond 'k' are not important.
+
+Example :-
+  Input: nums = [1,1,2]
+  Output: 2, nums = [1,2,_]
+  Explanation: First two elements are unique; the rest can be ignored.
+
+Constraints :-
+1)  1 <= nums.length <= 3 * 10^4
+2) -100 <= nums[i] <= 100
+3) nums is sorted in non-decreasing order.
+
+Approach :-
+  1) Use two pointers 'i' and 'j'. 
+     - 'j' tracks the position of the last unique element.
+     - 'i' iterates through the array.
+  2) Compare nums[i] with nums[j].
+     - If they are different, increment 'j' and set nums[j] = nums[i].
+  3) After iteration, 'j+1' is the number of unique elements.
+  4) Return 'j+1' as 'k'.
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)
+===========================================================
+
+Solution :-
+    import java.util.*;
+    public class RemoveDuplicates {
+    public int removeDuplicates(int[] nums) {
+        int j = 0; // pointer for the position of the last unique element
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[j] != nums[i]) {
+                nums[++j] = nums[i];
+            }
+        }
+        return ++j; // return the new length
+    }
+ }
