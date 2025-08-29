@@ -1,0 +1,52 @@
+/*
+===========================================================
+Problem :- Remove Duplicates from Sorted Array II
+Difficulty :- Medium
+===========================================================
+
+Description :-
+  Given an integer array nums sorted in non-decreasing order, 
+  remove some duplicates in-place such that each unique element 
+  appears at most twice. The relative order of elements should 
+  remain the same.
+  The function should modify nums in-place and return the length k 
+  of the resulting array. The first k elements of nums should 
+  contain the final result.
+
+Example 1 :-
+  Input :- nums = [1,1,1,2,2,3]
+  Output :- k = 5, nums = [1,1,2,2,3,_]
+
+Example 2 :-
+  Input :- nums = [0,0,1,1,1,1,2,3,3]
+  Output :- k = 7, nums = [0,0,1,1,2,3,3,_,_]
+
+Constraints :-
+  1) 1 <= nums.length <= 3 * 10^4
+  2) -10^4 <= nums[i] <= 10^4
+  3) nums is sorted in non-decreasing order
+
+Approach :-
+  1) Use a pointer `i` to track the position of the next valid element.
+  2) Iterate over each element `n` in nums:
+      → If `i < 2`, we can always keep the element (first two allowed).
+      → Otherwise, check if `n != nums[i-2]`. If true, keep the element.
+  3) This ensures each number appears at most twice.
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)  
+===========================================================
+*/
+
+Solution:-
+  public class RemoveDuplicatesSortedArrayII {
+      public int removeDuplicates(int[] nums) {
+          int i = 0;  // Pointer for next valid position
+          for (int n : nums) {
+              if (i < 2 || n != nums[i - 2]) {
+                  nums[i++] = n;
+              }
+          }
+          return i;
+      }
+  }
