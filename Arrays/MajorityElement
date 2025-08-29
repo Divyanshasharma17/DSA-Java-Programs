@@ -1,0 +1,58 @@
+/*
+===========================================================
+Problem: Majority Element
+Difficulty: Easy
+===========================================================
+
+Description :-
+  Given an integer array nums of size n, return the majority 
+  element.
+  The majority element is the element that appears more than 
+  ⌊n / 2⌋ times. It is guaranteed that the majority element 
+  always exists in the array.
+
+Example 1 :-
+  Input :- nums = [3,2,3]
+  Output :- 3
+
+Example 2 :-
+  Input :- nums = [2,2,1,1,1,2,2]
+  Output :- 2
+
+Constraints :-
+  1) n == nums.length
+  2) 1 <= n <= 5 * 10^4
+  3) -10^9 <= nums[i] <= 10^9
+
+Approach :-
+  1) Use Boyer-Moore Voting Algorithm:
+      → Maintain a candidate element and a counter.
+      → If counter is zero, choose the current element as 
+        the new candidate.
+      → If current element equals candidate, increment counter, 
+        else decrement counter.
+  2) At the end, the candidate will be the majority element.
+
+Time Complexity :- O(n)  
+Space Complexity :- O(1)  
+===========================================================
+*/
+
+Solution :-
+  public class MajorityElement {
+      public int majorityElement(int[] nums) {
+          int candidate = 0;
+          int count = 0;
+          for (int num : nums) {
+              if (count == 0) {
+                  candidate = num;
+              }
+              if (num == candidate) {
+                  count++;
+              } else {
+                  count--;
+              }
+          }
+          return candidate;
+      }
+  }
