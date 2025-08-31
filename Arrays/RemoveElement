@@ -1,7 +1,7 @@
 /*
 ===========================================================
-Problem: Remove Element
-Difficulty: Easy
+Problem :- Remove Element
+Difficulty :- Easy
 ===========================================================
 
 Description :-
@@ -40,13 +40,13 @@ Space Complexity: O(1)
 Solution :- 
   public class RemoveElement {
       public int removeElement(int[] nums, int val) {
-          int count = 0; // pointer for valid elements
+          int count = 0; 
           for (int i = 0; i < nums.length; i++) {
               if (nums[i] != val) {
                   nums[count] = nums[i];
                   count++;
               }
           }
-          return count; // number of valid elements
+          return count; 
       }
   }
