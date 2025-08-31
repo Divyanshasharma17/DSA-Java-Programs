@@ -42,11 +42,11 @@ Solution :-
               if (nums[mid] == target) {
                   return mid; // target found
               } else if (nums[mid] > target) {
-                  end = mid - 1; // search left half
+                  end = mid - 1; 
               } else {
-                  start = mid + 1; // search right half
+                  start = mid + 1; 
               }
           }
-          return start; // insertion point
+          return start; 
       }
   }
