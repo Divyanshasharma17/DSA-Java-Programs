@@ -1,0 +1,62 @@
+/*
+===========================================================
+Problem :- Longest Substring Without Repeating Characters
+Difficulty:- Medium
+===========================================================
+
+Description :-
+  Given a string s, find the length of the longest substring 
+  without duplicate characters.
+
+Example 1 :
+  Input :- s = "abcabcbb"
+  Output :- 3
+  Explanation :- The longest substring is "abc" with length 3.
+
+Example 2 :
+  Input :- s = "bbbbb"
+  Output :- 1
+  Explanation :- The longest substring is "b" with length 1.
+
+Example 3 :
+  Input :- s = "pwwkew"
+  Output :- 3
+  Explanation :- The longest substring is "wke" with length 3.
+  Note: "pwke" is not valid since it's a subsequence, not a substring.
+
+Constraints :-
+  1) 0 <= s.length <= 5 * 10^4
+  2) s consists of English letters, digits, symbols, and spaces.
+
+Approach :-
+  1. Use a sliding window technique with two pointers (left, right).
+  2. Maintain a HashSet to track unique characters in the current window.
+  3. Expand the right pointer:
+     → If the character is not in the set, add it and update max length.
+     → If the character is a duplicate, move the left pointer until the duplicate is removed.
+  4. Continue until the right pointer reaches the end of the string.
+
+Time Complexity :- O(n)   
+Space Complexity :- O(min(n, charset))  
+===========================================================
+*/
+
+Solution :-
+
+import java.util.*;
+public class LongestSubstringWithoutRepeatingCharacters {
+    public int lengthOfLongestSubstring(String s) {
+        HashSet<Character> set = new HashSet<>();
+        int left = 0, maxLen = 0;
+        for (int right = 0; right < s.length(); right++) {
+            char c = s.charAt(right);
+            while (set.contains(c)) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+            set.add(c);
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+}
