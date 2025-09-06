@@ -1,0 +1,67 @@
+/*
+===========================================================
+Problem :- Valid Parentheses
+Difficulty :- Easy
+===========================================================
+
+Description :-
+  Given a string s containing just the characters '(', ')', '{', '}', 
+  '[' and ']', determine if the input string is valid.
+  A string is valid if:
+  1. Open brackets are closed by the same type of brackets.
+  2. Open brackets are closed in the correct order.
+  3. Every closing bracket has a corresponding opening bracket.
+
+
+Example 1 :
+  Input :- s = "()"
+  Output :- true
+
+Example 2 :
+  Input :- s = "()[]{}"
+  Output :- true
+
+Example 3 :
+  Input :- s = "(]"
+  Output :- false
+
+Example 4 :
+  Input :- s = "([])"
+  Output :- true
+
+Example 5 :
+  Input :- s = "([)]"
+  Output :- false
+
+Constraints :-
+  1)- 1 <= s.length <= 10^4
+  2)- s consists only of the characters '(', ')', '{', '}', '[', ']'.
+
+Approach :-
+  1. Iteratively remove valid bracket pairs:
+     → Replace "()", "{}", and "[]" with an empty string.
+  2. Continue until no replacements can be made.
+  3. If the final string is empty, it is valid.
+  4. Otherwise, return false.
+
+Time Complexity :- O(n^2) 
+Space Complexity :- O(1) 
+===========================================================
+*/
+
+Solution :-
+  public class ValidParentheses {
+      public boolean isValid(String s) {
+          while (true) {
+              if (s.contains("()")) {
+                  s = s.replace("()", "");
+              } else if (s.contains("{}")) {
+                  s = s.replace("{}", "");
+              } else if (s.contains("[]")) {
+                  s = s.replace("[]", "");
+              } else {
+                  return s.isEmpty();
+              }
+          }
+      }
+  }
