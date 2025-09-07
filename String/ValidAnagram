@@ -1,0 +1,56 @@
+/*
+===========================================================
+Problem :- Valid Anagram
+Difficulty :- Easy
+===========================================================
+
+Description :-
+  Given two strings s and t, determine if t is an anagram of s.
+  An anagram is a word or phrase formed by rearranging the 
+  letters of another word or phrase, using all the original 
+  letters exactly once.
+
+Example 1 :
+  Input :- s = "anagram", t = "nagaram"
+  Output :- true
+
+Example 2 :
+  Input :- s = "rat", t = "car"
+  Output :- false
+
+Constraints :-
+  1)- 1 <= s.length, t.length <= 5 * 10^4
+  2)- s and t consist only of lowercase English letters.
+
+Approach :-
+  1. If the lengths of s and t differ, they cannot be anagrams.
+  2. Use an integer frequency array of size 26 to track counts of characters.
+     → Increment count for each character in s.
+     → Decrement count for each character in t.
+  3. After processing, if all counts are zero, s and t are anagrams.
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)
+===========================================================
+*/
+
+Solution :-
+  public class ValidAnagram {
+      public boolean isAnagram(String s, String t) {
+          if (s.length() != t.length()) {
+              return false;
+          }
+          int[] count = new int[26];
+          
+          for (int i = 0; i < s.length(); i++) {
+              count[s.charAt(i) - 'a']++;
+              count[t.charAt(i) - 'a']--;
+          }
+          for (int value : count) {
+              if (value != 0) {
+                  return false;
+              }
+          }
+          return true;
+      }
+  }
