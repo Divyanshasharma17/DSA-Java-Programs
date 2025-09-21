@@ -1,0 +1,57 @@
+/*
+===========================================================
+Problem :- Linked List Cycle Detection
+Difficulty :- Easy
+===========================================================
+
+Description :-
+  Given the head of a linked list, determine if the linked list 
+  contains a cycle. A cycle exists if a node can be reached 
+  again by continuously following the next pointer. 
+
+Example 1 :-
+  Input :- head = [3,2,0,-4], pos = 1
+  Output :- true
+  Explanation :- The tail connects to the 1st node (0-indexed).
+
+Example 2 :-
+  Input :- head = [1,2], pos = 0
+  Output :- true
+  Explanation :- The tail connects to the 0th node.
+
+Example 3 :-
+  Input :- head = [1], pos = -1
+  Output :- false
+  Explanation :- There is no cycle in the linked list.
+
+Constraints:
+  1) The number of nodes in the list is in the range [0, 10^4].
+  2) -10^5 <= Node.val <= 10^5
+  3) pos is -1 or a valid index in the linked list.
+
+Approach :-
+  1. Use two pointers: slow and fast, both starting at head.
+  2. Move slow by one step and fast by two steps in each iteration.
+  3. If slow equals fast, a cycle exists; return true.
+  4. If fast reaches null, no cycle exists; return false.
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)
+===========================================================
+*/
+
+Solution :-
+public class LinkedListCycle {
+    public boolean hasCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        while (slow != null && fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
