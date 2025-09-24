@@ -1,0 +1,68 @@
+
+Problem :- Remove Nth Node From End of List
+Difficulty :- Medium
+
+Description :-
+  Given the head of a linked list, remove the nth node from the 
+  end of the list and return its head.
+
+Example 1 :-
+  Input :- head = [1,2,3,4,5], n = 2
+  Output :- [1,2,3,5]
+
+Example 2 :-
+  Input :- head = [1], n = 1
+  Output :- []
+
+Example 3 :-
+  Input :-  head = [1,2], n = 1
+  Output :- [1]
+
+Constraints :-
+  1. The number of nodes in the list is sz.
+  2. 1 <= sz <= 30
+  3. 0 <= Node.val <= 100
+  4. 1 <= n <= sz
+
+Approach :-
+  1. Use a dummy node pointing to head to handle edge cases.
+  2. Maintain two pointers: first and second, starting at dummy.
+  3. Move the second pointer n steps ahead.
+  4. Move both pointers until the second pointer reaches the end.
+  5. Adjust first.next to skip the nth node from the end.
+  6. Return dummy.next as the new head.
+
+Time Complexity :- O(n)
+Space Complexity :- O(1)
+===========================================================
+*/
+
+Solution :-
+  public class RemoveNthNodeFromEnd {
+      public ListNode removeNthFromEnd(ListNode head, int n) {
+          ListNode dummy = new ListNode(-1);
+          dummy.next = head;
+          ListNode firstPtr = dummy;
+          ListNode secondPtr = dummy;
+          for (int i = 0; i < n; i++) {
+              secondPtr = secondPtr.next;
+          }
+          while (secondPtr.next != null) {
+              firstPtr = firstPtr.next;
+              secondPtr = secondPtr.next;
+          }
+          firstPtr.next = firstPtr.next.next;
+          return dummy.next;
+      }
+  }
+  
+  /**
+   * Definition for singly-linked list.
+   * public class ListNode {
+   *     int val;
+   *     ListNode next;
+   *     ListNode() {}
+   *     ListNode(int val) { this.val = val; }
+   *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+   * }
+   */
