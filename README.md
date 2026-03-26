@@ -4,7 +4,7 @@ Collection of Java solutions for Data Structures and Algorithms practice.
 This repository contains my Java solutions to LeetCode and DSA problems.
 The main purpose of this repo is to keep all my solved problems in one place and track my coding practice.
 
-📂 What’s Inside :-    
+📂 What’s Inside :-     
 
 ✅ Java solutions to different coding problems.
 
